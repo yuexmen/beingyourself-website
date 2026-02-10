@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BeingYourself — Somatic Inquiry for Leaders</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --coral: #E89B7E;
+  --brown: #5A4A42;
+  --sand: #F2ECE4;
+  --taupe: #D4C4B0;
+  --sage: #9FB59C;
+  --blush: #C9A89E;
+  --forest: #6B7565;
+  --white: #FFFFFF;
+}
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  font-family: 'Source Sans Pro', -apple-system, sans-serif;
+  color: var(--brown);
+  background: var(--sand);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.container {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ─── CTA Button ─── */
+.cta-btn {
+  display: inline-block;
+  background: var(--coral);
+  color: var(--white);
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  padding: 16px 40px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background 0.25s, transform 0.2s;
+  border: none;
+  cursor: pointer;
+}
+.cta-btn:hover { background: #d88968; transform: translateY(-1px); }
+
+.section-label {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--sage);
+  margin-bottom: 12px;
+}
+
+/* ─── HERO ─── */
+.hero {
+  min-height: 92vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 80px 24px 60px;
+  background: var(--sand);
+}
+.hero-inner { max-width: 760px; }
+.hero h1 {
+  font-size: clamp(2.4rem, 5.5vw, 3.6rem);
+  color: var(--brown);
+  margin-bottom: 24px;
+  font-weight: 700;
+}
+.hero h1 em {
+  font-style: italic;
+  color: var(--coral);
+}
+.hero .subtitle {
+  font-size: clamp(1.1rem, 2.2vw, 1.3rem);
+  color: var(--forest);
+  max-width: 600px;
+  margin: 0 auto 40px;
+  font-weight: 300;
+  line-height: 1.8;
+}
+.hero .micro {
+  margin-top: 16px;
+  font-size: 0.9rem;
+  color: var(--blush);
+}
+
+/* ─── PROBLEM ─── */
+.problem {
+  padding: 100px 24px;
+  background: var(--white);
+}
+.problem h2 {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  text-align: center;
+  margin-bottom: 56px;
+}
+.pain-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 32px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+.pain-card {
+  background: var(--sand);
+  padding: 36px 32px;
+  border-radius: 10px;
+  border-left: 4px solid var(--taupe);
+}
+.pain-card p {
+  font-size: 1.05rem;
+  color: var(--brown);
+  line-height: 1.7;
+}
+.pain-card .label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--blush);
+  margin-bottom: 10px;
+}
+.problem .closer {
+  text-align: center;
+  margin-top: 56px;
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.problem .closer p {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.35rem;
+  font-style: italic;
+  color: var(--forest);
+  line-height: 1.6;
+}
+
+/* ─── SHIFT ─── */
+.shift {
+  padding: 100px 24px;
+  background: var(--sand);
+}
+.shift-inner {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+}
+.shift h2 {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  margin-bottom: 32px;
+}
+.shift p {
+  font-size: 1.1rem;
+  color: var(--forest);
+  margin-bottom: 20px;
+  line-height: 1.8;
+}
+.shift .highlight-box {
+  background: var(--white);
+  border-radius: 10px;
+  padding: 36px 40px;
+  margin: 40px 0;
+  border-left: 4px solid var(--coral);
+}
+.shift .highlight-box p {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.25rem;
+  color: var(--brown);
+  font-style: italic;
+  margin: 0;
+}
+
+/* ─── 3R FRAMEWORK ─── */
+.framework {
+  padding: 100px 24px;
+  background: var(--white);
+}
+.framework h2 {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  text-align: center;
+  margin-bottom: 16px;
+}
+.framework .intro {
+  text-align: center;
+  color: var(--forest);
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0 auto 56px;
+}
+.steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 40px;
+  max-width: 960px;
+  margin: 0 auto;
+  position: relative;
+}
+.step {
+  text-align: center;
+  padding: 40px 28px;
+  background: var(--sand);
+  border-radius: 12px;
+  position: relative;
+}
+.step-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--coral);
+  color: var(--white);
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+.step h3 {
+  font-size: 1.4rem;
+  margin-bottom: 14px;
+  color: var(--brown);
+}
+.step p {
+  font-size: 1rem;
+  color: var(--forest);
+  line-height: 1.7;
+}
+.arrow-connector {
+  display: none;
+}
+@media (min-width: 800px) {
+  .arrow-connector {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    color: var(--taupe);
+    padding: 0;
+    min-width: 40px;
+  }
+  .steps {
+    grid-template-columns: 1fr auto 1fr auto 1fr;
+    gap: 16px;
+  }
+}
+
+/* ─── JOURNEY ─── */
+.journey {
+  padding: 100px 24px;
+  background: var(--sand);
+}
+.journey h2 {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  text-align: center;
+  margin-bottom: 16px;
+}
+.journey .intro {
+  text-align: center;
+  color: var(--forest);
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0 auto 56px;
+}
+.journey-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 32px;
+  max-width: 960px;
+  margin: 0 auto 48px;
+}
+.journey-card {
+  background: var(--white);
+  border-radius: 12px;
+  padding: 40px 32px;
+}
+.journey-card h3 {
+  font-size: 1.25rem;
+  margin-bottom: 8px;
+  color: var(--brown);
+}
+.journey-card .month-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--coral);
+  margin-bottom: 16px;
+}
+.journey-card ul {
+  list-style: none;
+  padding: 0;
+}
+.journey-card li {
+  padding: 6px 0;
+  padding-left: 20px;
+  position: relative;
+  color: var(--forest);
+  font-size: 0.98rem;
+}
+.journey-card li::before {
+  content: '–';
+  position: absolute;
+  left: 0;
+  color: var(--taupe);
+  font-weight: 700;
+}
+.journey-includes {
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+}
+.journey-includes h3 {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+.includes-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px 24px;
+  list-style: none;
+  padding: 0;
+  margin-bottom: 32px;
+}
+.includes-list li {
+  font-size: 1rem;
+  color: var(--brown);
+  background: var(--white);
+  padding: 10px 20px;
+  border-radius: 6px;
+}
+.investment {
+  text-align: center;
+  margin-top: 40px;
+}
+.investment .price {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  color: var(--brown);
+  font-weight: 700;
+}
+.investment .note {
+  font-size: 0.95rem;
+  color: var(--forest);
+  margin-top: 8px;
+}
+
+/* ─── ABOUT ─── */
+.about {
+  padding: 100px 24px;
+  background: var(--white);
+}
+.about-inner {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+}
+.about h2 {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  margin-bottom: 32px;
+}
+.about p {
+  font-size: 1.08rem;
+  color: var(--forest);
+  margin-bottom: 20px;
+  line-height: 1.8;
+}
+
+/* ─── TESTIMONIALS ─── */
+.testimonials {
+  padding: 100px 24px;
+  background: var(--sand);
+}
+.testimonials h2 {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  text-align: center;
+  margin-bottom: 56px;
+}
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 32px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+.testimonial-card {
+  background: var(--white);
+  padding: 36px 32px;
+  border-radius: 12px;
+}
+.testimonial-card blockquote {
+  font-size: 1.05rem;
+  font-style: italic;
+  color: var(--brown);
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+.testimonial-card .attribution {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--blush);
+  letter-spacing: 0.02em;
+}
+
+/* ─── FAQ ─── */
+.faq {
+  padding: 100px 24px;
+  background: var(--white);
+}
+.faq h2 {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  text-align: center;
+  margin-bottom: 56px;
+}
+.faq-list {
+  max-width: 720px;
+  margin: 0 auto;
+}
+.faq-item {
+  border-bottom: 1px solid var(--taupe);
+  padding: 28px 0;
+}
+.faq-item:first-child { border-top: 1px solid var(--taupe); }
+.faq-q {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--brown);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+.faq-q::after {
+  content: '+';
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: var(--taupe);
+  transition: transform 0.3s;
+  flex-shrink: 0;
+}
+.faq-item.open .faq-q::after { content: '−'; }
+.faq-a {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease, padding 0.35s ease;
+  padding-top: 0;
+}
+.faq-item.open .faq-a {
+  max-height: 300px;
+  padding-top: 16px;
+}
+.faq-a p {
+  font-size: 1.02rem;
+  color: var(--forest);
+  line-height: 1.7;
+}
+
+/* ─── FINAL CTA ─── */
+.final-cta {
+  padding: 100px 24px;
+  background: var(--brown);
+  text-align: center;
+}
+.final-cta h2 {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  color: var(--sand);
+  margin-bottom: 20px;
+}
+.final-cta p {
+  color: var(--taupe);
+  font-size: 1.1rem;
+  max-width: 540px;
+  margin: 0 auto 40px;
+  line-height: 1.7;
+}
+
+/* ─── FOOTER ─── */
+footer {
+  padding: 40px 24px;
+  background: #4A3B34;
+  text-align: center;
+}
+footer p {
+  color: var(--taupe);
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+}
+footer a {
+  color: var(--coral);
+  text-decoration: none;
+}
+footer a:hover { text-decoration: underline; }
+
+/* ─── NAV ─── */
+.top-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(242, 236, 228, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 16px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(212, 196, 176, 0.4);
+}
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--brown);
+  text-decoration: none;
+}
+.nav-cta {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--white);
+  background: var(--coral);
+  padding: 10px 24px;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background 0.25s;
+}
+.nav-cta:hover { background: #d88968; }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 600px) {
+  .hero { min-height: 80vh; padding-top: 100px; }
+  .pain-grid, .journey-grid, .testimonial-grid { grid-template-columns: 1fr; }
+  .cta-btn { padding: 14px 32px; font-size: 1rem; }
+  .shift .highlight-box { padding: 28px 24px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="top-nav">
+  <a href="#" class="logo">BeingYourself</a>
+  <a href="#calendly-link" class="nav-cta">Book a Call</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-inner">
+    <p class="section-label">Somatic Inquiry for Leaders</p>
+    <h1>High performance isn't more force.<br>It's more <em>access</em>.</h1>
+    <p class="subtitle">For founders and leaders who've optimized everything on the outside — and still feel like something fundamental is missing on the inside.</p>
+    <a href="#calendly-link" class="cta-btn">Book Your Free Discovery Call</a>
+    <p class="micro">30 minutes. No pitch. Just clarity.</p>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="problem">
+  <div class="container">
+    <p class="section-label" style="text-align:center;">Sound familiar?</p>
+    <h2>You've optimized everything<br>except <em>this</em>.</h2>
+    <div class="pain-grid">
+      <div class="pain-card">
+        <p class="label">3:00 AM</p>
+        <p>You wake up with a racing mind. Not because something's wrong — because your nervous system doesn't know how to stop solving. You've been in fight-or-flight so long it feels normal.</p>
+      </div>
+      <div class="pain-card">
+        <p class="label">The Snap</p>
+        <p>You snapped at your Head of Sales in a meeting. Again. You know it's not who you want to be. Afterward, the guilt sits in your chest like a weight you can't put down.</p>
+      </div>
+      <div class="pain-card">
+        <p class="label">The Distance</p>
+        <p>"I feel married to your calendar." Your partner said it calmly, which made it worse. You're present for your company but absent from your own life.</p>
+      </div>
+      <div class="pain-card">
+        <p class="label">The Neck</p>
+        <p>Chronic tension that no massage, standing desk, or stretching routine has fixed. Your body is keeping score of every hard conversation you've muscled through.</p>
+      </div>
+      <div class="pain-card">
+        <p class="label">The Stack</p>
+        <p>Three years of therapy. Executive coaching that was fine but not transformative. A meditation app you used for twelve days. You're not opposed to doing the work — you just haven't found the right work.</p>
+      </div>
+      <div class="pain-card">
+        <p class="label">The Doubt</p>
+        <p>By every external metric, you've made it. So why does success feel like a costume you put on every morning? You can't think your way out of this one.</p>
+      </div>
+    </div>
+    <div class="closer">
+      <p>Your brain can't solve what your body is holding.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SHIFT -->
+<section class="shift">
+  <div class="shift-inner">
+    <p class="section-label">A Different Approach</p>
+    <h2>What if the answer isn't<br>another strategy?</h2>
+    <p>Somatic inquiry isn't therapy. It's not meditation. And it's definitely not someone telling you to "just breathe."</p>
+    <p>It's a precise, body-based practice that helps you access the patterns your nervous system is running on autopilot — the ones that drive your reactivity, your tension, and the gap between who you are and how you show up.</p>
+    <div class="highlight-box">
+      <p>Think of it this way: you've spent decades training your mind. Your body has been running the show without any training at all. Somatic inquiry changes that.</p>
+    </div>
+    <p>This isn't about becoming softer. It's about becoming <strong>more precise</strong> — in your decisions, your relationships, and your capacity to lead under pressure without burning out.</p>
+  </div>
+</section>
+
+<!-- 3R FRAMEWORK -->
+<section class="framework">
+  <div class="container">
+    <p class="section-label" style="text-align:center;">The Method</p>
+    <h2>The 3R Framework</h2>
+    <p class="intro">Every pattern that limits your leadership follows the same loop. We interrupt it at the source.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-number">1</div>
+        <h3>Resistance</h3>
+        <p>Something happens — a difficult email, a board question, a comment from your partner. Before you're even aware, your body tightens. Jaw. Shoulders. Chest. This is your nervous system bracing. We learn to <strong>notice</strong> it in real time.</p>
+      </div>
+      <div class="arrow-connector">→</div>
+      <div class="step">
+        <div class="step-number">2</div>
+        <h3>Reaction</h3>
+        <p>The resistance triggers a <em>secondary emotion</em> — anger, withdrawal, over-functioning, control. It feels like "you," but it's a pattern. We learn to distinguish your <strong>primary emotion</strong> (what's actually there) from the reaction layered on top.</p>
+      </div>
+      <div class="arrow-connector">→</div>
+      <div class="step">
+        <div class="step-number">3</div>
+        <h3>Relax &amp; Release</h3>
+        <p>With practice, you learn to <strong>stay with</strong> what's actually happening — without the story, the fix, or the escape. The tension completes its cycle. What's left is clarity, choice, and an entirely different quality of presence.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- JOURNEY -->
+<section class="journey">
+  <div class="container">
+    <p class="section-label" style="text-align:center;">The Program</p>
+    <h2>Your 3-Month Somatic<br>Inquiry Journey</h2>
+    <p class="intro">This isn't a course. It's a guided transformation with individualized attention, structured around your real life and real challenges.</p>
+    <div class="journey-grid">
+      <div class="journey-card">
+        <p class="month-label">Month 1</p>
+        <h3>Mapping</h3>
+        <ul>
+          <li>Identify your core nervous system patterns</li>
+          <li>Learn to read your body's early warning signals</li>
+          <li>Understand your primary vs. secondary emotions</li>
+          <li>Build a daily somatic awareness practice (10 min)</li>
+        </ul>
+      </div>
+      <div class="journey-card">
+        <p class="month-label">Month 2</p>
+        <h3>Interrupting</h3>
+        <ul>
+          <li>Apply the 3R Framework to live situations</li>
+          <li>Practice real-time regulation in high-stakes moments</li>
+          <li>Work with specific leadership triggers</li>
+          <li>Deepen capacity to stay present under pressure</li>
+        </ul>
+      </div>
+      <div class="journey-card">
+        <p class="month-label">Month 3</p>
+        <h3>Integrating</h3>
+        <ul>
+          <li>Consolidate new patterns into daily leadership</li>
+          <li>Navigate relationships from a grounded place</li>
+          <li>Build your own ongoing practice toolkit</li>
+          <li>Measure shifts: sleep, reactivity, presence, clarity</li>
+        </ul>
+      </div>
+    </div>
+    <div class="journey-includes">
+      <h3>What's Included</h3>
+      <ul class="includes-list">
+        <li>12 × 60-min private sessions</li>
+        <li>Async support between sessions</li>
+        <li>Custom somatic practices</li>
+        <li>Integration resources</li>
+      </ul>
+    </div>
+    <div class="investment">
+      <p class="price">$5,880 USD</p>
+      <p class="note">3-month commitment · Payment plans available</p>
+      <br>
+      <a href="#calendly-link" class="cta-btn">Book Your Free Discovery Call</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about">
+  <div class="about-inner">
+    <p class="section-label">Your Guide</p>
+    <h2>Hi, I'm Yue.</h2>
+    <p>I work with leaders and founders who are performing at a high level — and quietly exhausted by the cost of keeping it all together.</p>
+    <p>My background spans somatic practice, nervous system regulation, and years of working with high-achievers who've tried the conventional routes. I created the 3R Framework because I saw the same pattern over and over: brilliant people trying to <em>think</em> their way out of problems that live in their bodies.</p>
+    <p>I'm direct, practical, and allergic to vague wellness talk. If you're looking for someone who understands the pressure you're under and can help you transform how you carry it — without asking you to slow down your ambition — we should talk.</p>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="container">
+    <p class="section-label" style="text-align:center;">From Clients</p>
+    <h2>What shifts look like</h2>
+    <div class="testimonial-grid">
+      <div class="testimonial-card">
+        <blockquote>"I came in skeptical. I'd done years of therapy and coaching. Within the first month, I noticed I was sleeping through the night for the first time in three years. By month three, my co-founder said I was 'a different person in hard conversations.' I wasn't different — I was finally actually present."</blockquote>
+        <p class="attribution">— Founder & CEO, Series B SaaS</p>
+      </div>
+      <div class="testimonial-card">
+        <blockquote>"I thought somatic work was going to be woo-woo. Yue's approach is the opposite. It's precise, it's practical, and it gave me tools I actually use — in board meetings, in arguments with my wife, at 2am when the anxiety used to take over. Best investment I've made outside of my company."</blockquote>
+        <p class="attribution">— Managing Partner, Venture Capital</p>
+      </div>
+      <div class="testimonial-card">
+        <blockquote>"The neck tension I'd had for six years — gone. But that's not even the main thing. The main thing is I stopped reacting and started choosing. My team noticed before I did."</blockquote>
+        <p class="attribution">— VP of Engineering, Public Tech Company</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="container">
+    <p class="section-label" style="text-align:center;">Common Questions</p>
+    <h2>Honest answers</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">Is this therapy?</div>
+        <div class="faq-a">
+          <p>No. Therapy typically focuses on understanding your past and processing psychological patterns through conversation. Somatic inquiry works directly with your nervous system and body — the patterns that run underneath your thoughts. Many clients do both, and find they're complementary. But this is a distinct modality focused on embodied change, not talk-based insight.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Is this "woo"?</div>
+        <div class="faq-a">
+          <p>I get it. The somatic space can be full of vague language and abstract promises. My approach is grounded in nervous system science and designed for people who value specificity. You'll track measurable shifts — sleep quality, reactivity frequency, physical tension patterns, decision-making clarity. If something isn't working, we adjust. No crystals, no chanting, no trust falls.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">I don't have time for this.</div>
+        <div class="faq-a">
+          <p>The program is one 60-minute session per week, plus a 10-minute daily practice. That's less time than you spend in most recurring meetings. And honestly — the time you're losing to poor sleep, reactive decisions, and relationship friction far exceeds that investment. This isn't adding to your schedule. It's upgrading how you move through it.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">How is this different from executive coaching?</div>
+        <div class="faq-a">
+          <p>Executive coaching typically works at the level of strategy, mindset, and behavior. Somatic inquiry works at the level of your nervous system — the layer <em>underneath</em> your strategies and behaviors. Most exec coaching helps you build better frameworks for thinking. This helps you change the physiological patterns that hijack your thinking in the first place. Different layer, different results.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What if it doesn't work for me?</div>
+        <div class="faq-a">
+          <p>The discovery call exists for exactly this reason. We'll talk about what you're experiencing, what you've already tried, and whether this approach is a genuine fit. I turn away more people than I take on — not because they don't need help, but because the fit has to be right for the work to land. There's no pressure, and I'll be honest with you about what I think.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <div class="container">
+    <h2>Ready to stop managing<br>and start <em style="color:var(--coral);">leading</em>?</h2>
+    <p>Book a free 30-minute discovery call. No pitch, no pressure. Just an honest conversation about what you're experiencing and whether this work is right for you.</p>
+    <a href="#calendly-link" class="cta-btn">Book Your Free Discovery Call</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p><a href="https://instagram.com/Yue.Hema" target="_blank" rel="noopener">@Yue.Hema</a> · <a href="https://beingyourself.love" target="_blank" rel="noopener">beingyourself.love</a></p>
+  <p>© 2026 BeingYourself. All rights reserved.</p>
+</footer>
+
+<script>
+// FAQ accordion
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.parentElement;
+    const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  });
+});
+</script>
+
+</body>
+</html>
